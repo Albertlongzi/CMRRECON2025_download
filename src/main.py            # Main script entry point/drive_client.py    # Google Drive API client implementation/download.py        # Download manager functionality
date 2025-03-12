@@ -1,0 +1,31 @@
+import argparse
+import os
+from drive_client import GoogleDriveClient
+from download import DownloadManager
+
+def main():
+    parser = argparse.ArgumentParser(description='Download the CMR2025 dataset from Google Drive.')
+    parser.add_argument('--config', type=str, required=True, help='Path to the configuration file.')
+    args = parser.parse_args()
+
+    # Load configuration
+    if not os.path.exists(args.config):
+        print(f"Configuration file not found: {args.config}")
+        return
+
+    with open(args.config) as config_file:
+        config = json.load(config_file)
+
+    download_directory = config.get('download_directory', '/mnt/LiDXXLab_Files/ziyang/CMR2025')
+    file_id = config.get('file_id')
+
+    # Initialize Google Drive client
+    drive_client = GoogleDriveClient()
+    drive_client.authenticate()
+
+    # Initialize download manager
+    download_manager = DownloadManager(drive_client, download_directory)
+    download_manager.download_file(file_id)
+
+if __name__ == '__main__':
+    main()

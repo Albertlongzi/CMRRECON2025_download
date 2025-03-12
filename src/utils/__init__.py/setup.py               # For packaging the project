@@ -1,0 +1,27 @@
+from setuptools import setup, find_packages
+
+setup(
+    name='cmr2025_downloader',
+    version='0.1.0',
+    author='Your Name',
+    author_email='your.email@example.com',
+    description='A tool to download the CMR2025 dataset from Google Drive',
+    packages=find_packages(where='src'),
+    package_dir={'': 'src'},
+    install_requires=[
+        'google-api-python-client',
+        'oauth2client',
+        'requests',
+    ],
+    entry_points={
+        'console_scripts': [
+            'cmr2025_downloader=main:main',  # Assuming main function is defined in main.py
+        ],
+    },
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+    ],
+    python_requires='>=3.6',
+)

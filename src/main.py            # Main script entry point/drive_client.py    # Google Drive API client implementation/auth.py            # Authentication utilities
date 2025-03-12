@@ -1,0 +1,25 @@
+import argparse
+import os
+from drive_client import GoogleDriveClient
+from download import download_file
+from config import load_config
+
+def main():
+    # Load configuration
+    config = load_config()
+    file_id = config['file_id']
+    download_dir = config['download_directory']
+
+    # Create download directory if it doesn't exist
+    os.makedirs(download_dir, exist_ok=True)
+
+    # Initialize Google Drive client
+    drive_client = GoogleDriveClient()
+
+    # Download the file
+    download_file(drive_client, file_id, download_dir)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Download CMR2025 dataset from Google Drive.")
+    args = parser.parse_args()
+    main()

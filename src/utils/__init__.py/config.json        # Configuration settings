@@ -1,0 +1,10 @@
+{
+    "google_drive": {
+        "file_id": "YOUR_FILE_ID_HERE",
+        "download_directory": "/mnt/LiDXXLab_Files/ziyang/CMR2025"
+    },
+    "logging": {
+        "level": "INFO",
+        "log_file": "/mnt/LiDXXLab_Files/ziyang/CMR2025/cmr2025_downloader.log"
+    }
+}
